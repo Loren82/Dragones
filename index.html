@@ -1,13 +1,10 @@
 
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragons</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <style>
         * {
@@ -54,7 +51,6 @@
             transform: scale(0.97);
         }
 
-        /* --- IMATGE DEL DRAC PROFESSIONAL --- */
         .dragon-image-wrapper {
             width: 200px;
             height: 200px;
@@ -73,7 +69,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(1.3) contrast(1.15);
         }
 
         .home-text {
@@ -99,12 +94,6 @@
             flex-direction: column;
             gap: 18px;
             padding: 10px 0 20px;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .icon-grid {
@@ -141,13 +130,6 @@
             font-size: 4.2rem;
             margin-bottom: 6px;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
-        }
-
-        .icon-weapon-svg {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 6px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8));
         }
 
         .icon-label {
@@ -196,68 +178,49 @@
         .back-btn:hover {
             color: #f5d742;
         }
-
-        @media (max-width: 480px) {
-            .dragon-image-wrapper { width: 160px; height: 160px; }
-            .icon-emoji { font-size: 3.5rem; }
-            .icon-item { min-height: 110px; padding: 15px 8px; }
-            .icon-weapon-svg { width: 55px; height: 55px; }
-            .icon-label { font-size: 0.7rem; letter-spacing: 1px; }
-        }
     </style>
 </head>
 
 <body>
     <div class="app-container">
 
-        <!-- PANTALLA D'INICI -->
+        <!-- PANTALLA INICIO -->
         <div id="home-screen">
             <div class="dragon-image-wrapper">
-                <img src="https://cdn.pixabay.com/photo/2023/01/05/18/06/dragon-7700254_1280.jpg" alt="Dragon Eye">
+                <!-- Imagen BASE64 que siempre se ve -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAxQTFRF////AAAAAAAAgACcAP8A3QAAABFJREFUeNpiYBgFo2AUjIJRMAAAAwAFAAFv7qV/AAAAAElFTkSuQmCC" alt="Dragon Eye">
             </div>
 
-            <div class="home-text">🔮 Toca per <span>accedir</span></div>
+            <div class="home-text">🔮 Toca para <span>acceder</span></div>
 
             <div style="margin-top: 30px; font-size: 0.7rem; color: rgba(255,215,0,0.2); letter-spacing: 4px; font-family: monospace;">
                 CLAU PDA 8008206
             </div>
         </div>
 
-        <!-- PANTALLA DE MENÚ -->
+        <!-- PANTALLA MENÚ -->
         <div id="menu-screen">
-            <button class="back-btn" id="backBtn">← <span>Tornar</span></button>
+            <button class="back-btn" id="backBtn">← <span>Volver</span></button>
 
             <div class="icon-grid">
                 <a href="https://forms.office.com/r/kNUQlJQSld" target="_blank" class="icon-item external-link">
-                    <svg class="icon-weapon-svg" viewBox="0 0 100 100">
-                        <rect x="45" y="40" width="50" height="10" rx="3" fill="#333" stroke="#555" stroke-width="1.5"/>
-                        <rect x="88" y="42" width="10" height="6" rx="2" fill="#444" stroke="#555" stroke-width="1"/>
-                        <rect x="30" y="35" width="20" height="20" rx="4" fill="#2a2a2a" stroke="#555" stroke-width="1.5"/>
-                        <rect x="14" y="38" width="20" height="16" rx="3" fill="#5a3a1a" stroke="#4a2a0a" stroke-width="1.5"/>
-                        <rect x="14" y="38" width="20" height="4" rx="2" fill="#6a4a2a" opacity="0.5"/>
-                        <rect x="36" y="52" width="12" height="18" rx="3" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
-                        <path d="M34 56 L50 56 L50 62 L34 62 Z" fill="none" stroke="#444" stroke-width="1.5"/>
-                        <rect x="40" y="56" width="4" height="6" rx="1" fill="#555"/>
-                        <rect x="45" y="50" width="42" height="6" rx="2" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
-                        <rect x="47" y="41" width="40" height="2" rx="1" fill="#555" opacity="0.4"/>
-                        <rect x="32" y="37" width="16" height="2" rx="1" fill="#444" opacity="0.3"/>
-                    </svg>
-                    <div class="icon-label">ARMES</div>
+                    <div class="icon-emoji">⚔️</div>
+                    <div class="icon-label">ARMAS</div>
                 </a>
 
                 <a href="https://forms.office.com/e/HutLxU4Xqr" target="_blank" class="icon-item external-link">
                     <div class="icon-emoji">🛡️</div>
-                    <div class="icon-label">BALÍSTIC</div>
+                    <div class="icon-label">BALÍSTICO</div>
                 </a>
 
                 <a href="https://forms.office.com/r/kNUNUNNNzB" target="_blank" class="icon-item external-link">
                     <div class="icon-emoji">🚐</div>
-                    <div class="icon-label">VEHICLES</div>
+                    <div class="icon-label">VEHÍCULOS</div>
                 </a>
 
                 <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" target="_blank" class="icon-item external-link">
                     <div class="icon-emoji">📷</div>
-                    <div class="icon-label">CÀMERES</div>
+                    <div class="icon-label">CÁMARAS</div>
                 </a>
             </div>
 
@@ -274,20 +237,12 @@
         homeScreen.addEventListener('click', () => {
             homeScreen.style.display = 'none';
             menuScreen.style.display = 'flex';
-            history.pushState({ menu: true }, '');
         });
 
         backBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             menuScreen.style.display = 'none';
             homeScreen.style.display = 'flex';
-        });
-
-        window.addEventListener('popstate', () => {
-            if (menuScreen.style.display === 'flex') {
-                menuScreen.style.display = 'none';
-                homeScreen.style.display = 'flex';
-            }
         });
 
         document.querySelectorAll('.external-link').forEach(link => {
