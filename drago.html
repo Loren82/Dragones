@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -95,26 +95,12 @@
             border: 2px solid #8b5a00;
         }
 
-        .eye-number {
+        .dragon-head-svg {
             position: relative;
             z-index: 10;
-            font-size: 5.5rem;
-            font-weight: 900;
-            color: #fffbe6;
-            text-shadow:
-                0 0 20px #ffaa00,
-                0 0 40px #ff6600,
-                0 0 80px #ff3300,
-                0 0 120px #cc2200,
-                3px 3px 0 #4a1a00,
-                -2px -2px 0 #4a1a00;
-            letter-spacing: -2px;
-            transform: rotate(-5deg);
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            background: rgba(0,0,0,0.2);
-            padding: 0 10px;
-            border-radius: 20px;
-            backdrop-filter: blur(2px);
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0 0 15px rgba(255, 100, 0, 0.8));
         }
 
         .home-text {
@@ -246,7 +232,7 @@
 
         @media (max-width: 480px) {
             .dragon-eye { width: 150px; height: 150px; }
-            .eye-number { font-size: 4.5rem; }
+            .dragon-head-svg { width: 80px; height: 80px; }
             .icon-emoji { font-size: 3.5rem; }
             .icon-item { min-height: 110px; padding: 15px 8px; }
             .icon-weapon-svg { width: 55px; height: 55px; }
@@ -257,18 +243,27 @@
 <body>
     <div class="app-container">
 
-        <!-- PANTALLA DE INICIO -->
+        <!-- PANTALLA D'INICI -->
         <div id="home-screen">
             <div class="dragon-eye">
-                <div class="eye-number">42</div>
+                <svg class="dragon-head-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 C35 15 25 30 20 45 C15 60 25 75 35 80 C40 82 45 80 50 75 C55 80 60 82 65 80 C75 75 85 60 80 45 C75 30 65 15 50 15 Z" fill="#1a0f0a" stroke="#ffaa00" stroke-width="2"/>
+                    <path d="M35 35 L45 42 L38 52 Z" fill="#ff6600"/>
+                    <path d="M65 35 L55 42 L62 52 Z" fill="#ff6600"/>
+                    <path d="M50 45 L42 65 L50 70 L58 65 Z" fill="#2b1a0a" stroke="#ff8800" stroke-width="1.5"/>
+                    <path d="M30 25 L20 10 L35 18 Z" fill="#d4a017"/>
+                    <path d="M70 25 L80 10 L65 18 Z" fill="#d4a017"/>
+                    <circle cx="40" cy="45" r="4" fill="#ffee55"/>
+                    <circle cx="60" cy="45" r="4" fill="#ffee55"/>
+                </svg>
             </div>
-            <div class="home-text">🔮 Toca para <span>acceder</span></div>
-            <div style="margin-top: 30px; font-size: 0.7rem; color: rgba(255,215,0,0.2); letter-spacing: 4px; font-family: monospace;">CLAVE PDA 8008206</div>
+            <div class="home-text">🔮 Toca per <span>accedir</span></div>
+            <div style="margin-top: 30px; font-size: 0.7rem; color: rgba(255,215,0,0.2); letter-spacing: 4px; font-family: monospace;">CLAU PDA 8008206</div>
         </div>
 
         <!-- PANTALLA DE MENÚ -->
         <div id="menu-screen">
-            <button class="back-btn" id="backBtn">← <span>Volver</span></button>
+            <button class="back-btn" id="backBtn">← <span>Tornar</span></button>
 
             <div class="icon-grid">
                 <!-- 1. ESCOPETA -->
@@ -301,14 +296,14 @@
                     <div class="icon-label">VEHICLES</div>
                 </a>
 
-                <!-- 4. CÁMARA - CÀMERES (URL acortada para evitar límites de URI del WebView de Android) -->
+                <!-- 4. CÀMERES -->
                 <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" target="_blank" rel="noopener noreferrer" class="icon-item external-link">
                     <div class="icon-emoji">📷</div>
                     <div class="icon-label">CÀMERES</div>
                 </a>
             </div>
 
-            <div class="clave-pda-bg">CLAVE PDA 8008206</div>
+            <div class="clave-pda-bg">CLAU PDA 8008206</div>
         </div>
 
     </div>
@@ -337,7 +332,6 @@
             }
         });
 
-        // Forzar apertura externa para evitar conflictos de URI excesiva dentro de APKs webview
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
