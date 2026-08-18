@@ -263,7 +263,7 @@
                 <div class="eye-number">42</div>
             </div>
             <div class="home-text">🔮 Toca para <span>acceder</span></div>
-            <div style="margin-top: 30px; font-size: 0.7rem; color: rgba(255,215,0,0.2); letter-spacing: 4px; font-family: monospace;">CLAU PDA 8008206</div>
+            <div style="margin-top: 30px; font-size: 0.7rem; color: rgba(255,215,0,0.2); letter-spacing: 4px; font-family: monospace;">CLAVE PDA 8008206</div>
         </div>
 
         <!-- PANTALLA DE MENÚ -->
@@ -272,7 +272,7 @@
 
             <div class="icon-grid">
                 <!-- 1. ESCOPETA -->
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" target="_blank" rel="noopener noreferrer" class="icon-item external-link">
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" target="_blank" class="icon-item">
                     <svg class="icon-weapon-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="45" y="40" width="50" height="10" rx="3" fill="#333" stroke="#555" stroke-width="1.5"/>
                         <rect x="88" y="42" width="10" height="6" rx="2" fill="#444" stroke="#555" stroke-width="1"/>
@@ -290,25 +290,25 @@
                 </a>
 
                 <!-- 2. ESCUDO - BALÍSTIC -->
-                <a href="https://forms.office.com/e/HutLxU4Xqr" target="_blank" rel="noopener noreferrer" class="icon-item external-link">
+                <a href="https://forms.office.com/e/HutLxU4Xqr" target="_blank" class="icon-item">
                     <div class="icon-emoji">🛡️</div>
                     <div class="icon-label">BALÍSTIC</div>
                 </a>
 
                 <!-- 3. FURGONETA - VEHICLES -->
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu" target="_blank" rel="noopener noreferrer" class="icon-item external-link">
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu" target="_blank" class="icon-item">
                     <div class="icon-emoji">🚐</div>
                     <div class="icon-label">VEHICLES</div>
                 </a>
 
-                <!-- 4. CÁMARA - CÀMERES -->
-                <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" target="_blank" rel="noopener noreferrer" class="icon-item external-link">
+                <!-- 4. CÁMARA - CÀMERES (URL simplificada para evitar error 500) -->
+                <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" target="_blank" class="icon-item">
                     <div class="icon-emoji">📷</div>
                     <div class="icon-label">CÀMERES</div>
                 </a>
             </div>
 
-            <div class="clave-pda-bg">CLAU PDA 8008206</div>
+            <div class="clave-pda-bg">CLAVE PDA 8008206</div>
         </div>
 
     </div>
@@ -321,7 +321,6 @@
         homeScreen.addEventListener('click', function() {
             homeScreen.style.display = 'none';
             menuScreen.style.display = 'flex';
-            history.pushState({ menu: true }, '');
         });
 
         backBtn.addEventListener('click', function(e) {
@@ -336,19 +335,11 @@
                 homeScreen.style.display = 'flex';
             }
         });
-
-        // Forzar apertura externa para abrir los formularios en el navegador del móvil y evitar el error 500
-        document.querySelectorAll('.external-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('href');
-                const win = window.open(url, '_system');
-                if (!win || win.closed || typeof win.closed == 'undefined') {
-                    window.location.href = url;
-                }
-            });
+        homeScreen.addEventListener('click', function() {
+            if (menuScreen.style.display === 'flex') {
+                history.pushState({ menu: true }, '');
+            }
         });
     </script>
 </body>
 </html>
-
