@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dracs</title>
 
-    <!-- refresc commit -->
-
     <style>
         * {
             margin: 0;
@@ -27,7 +25,6 @@
         .app-container {
             width: 100%;
             max-width: 420px;
-            background: #0a0a0f; /* eliminem gradient per no tapar el fons */
             border-radius: 40px;
             padding: 24px 20px 32px;
             box-shadow: 0 25px 50px -8px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,215,0,0.15);
@@ -35,6 +32,7 @@
             overflow: hidden;
             min-height: 700px;
             border: 1px solid #2a2a3a;
+            background: transparent; /* 🔥 IMPORTANT: permet veure escudo.jpg */
         }
 
         #home-screen {
@@ -98,7 +96,6 @@
             display: none;
             flex-direction: column;
             gap: 18px;
-            padding: 10px 0 20px;
 
             background-image: url('escudo.jpg');
             background-size: cover;
@@ -106,13 +103,15 @@
             background-repeat: no-repeat;
 
             position: relative;
+            padding: 0; /* 🔥 treiem padding que descentrava el text */
         }
 
         .icon-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-top: 10px;
+            margin-top: 30px;
+            padding: 0 20px; /* només padding pels icones */
         }
 
         .icon-item {
@@ -163,8 +162,6 @@
             left: 50%;
             bottom: 20px;
             transform: translateX(-50%) rotate(-2deg);
-            width: 100%;
-            text-align: center;
             font-size: 1.8rem;
             font-weight: 700;
             color: #ffff33;
@@ -175,6 +172,8 @@
             pointer-events: none;
             font-family: 'Courier New', monospace;
             z-index: 10;
+            width: auto; /* 🔥 evita que s'estiri i es desplaci */
+            white-space: nowrap; /* 🔥 evita salts de línia */
         }
 
         .back-btn {
@@ -182,13 +181,14 @@
             border: none;
             color: #8a7a5a;
             font-size: 1.6rem;
-            padding-bottom: 10px;
+            padding: 20px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             font-weight: 300;
             transition: 0.2s;
+            z-index: 20;
         }
 
         .back-btn:hover {
@@ -231,7 +231,6 @@
 
             <div class="icon-grid">
 
-                <!-- ARMES -->
                 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" 
                    target="_blank" 
                    class="icon-item external-link">
@@ -239,7 +238,6 @@
                     <div class="icon-label">ARMES</div>
                 </a>
 
-                <!-- BALÍSTIC -->
                 <a href="https://forms.office.com/e/HutLxU4Xqr" 
                    target="_blank" 
                    class="icon-item external-link">
@@ -247,7 +245,6 @@
                     <div class="icon-label">BALÍSTIC</div>
                 </a>
 
-                <!-- VEHICLES -->
                 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu" 
                    target="_blank" 
                    class="icon-item external-link">
@@ -255,7 +252,6 @@
                     <div class="icon-label">VEHICLES</div>
                 </a>
 
-                <!-- CÀMERES -->
                 <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" 
                    target="_blank" 
                    class="icon-item external-link">
