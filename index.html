@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
-    <title>Dracs</title>
+    <title>BRIMO</title>
+
+    <!-- CONFIGURACIÓN PARA ACCESO DIRECTO E ICONO PERSONALIZADO -->
+    <meta name="application-name" content="BRIMO">
+    <meta name="apple-mobile-web-app-title" content="BRIMO">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="Logo.jpg">
+    <link rel="icon" type="image/jpeg" href="Logo.jpg">
 
     <style>
         * {
@@ -331,8 +338,8 @@
                 e.preventDefault();
                 const url = this.getAttribute('data-url');
                 
-                // Forzar apertura directa en el navegador nativo del sistema desde WebIntoApp
-                window.open(url, '_system');
+                // Forzar apertura directa en el navegador nativo del sistema
+                window.open(url, '_blank');
             });
         });
 
