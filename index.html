@@ -19,36 +19,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 16px;
+            padding: 0;
         }
 
         .app-container {
             width: 100%;
             max-width: 420px;
+            height: 100vh; /* 🔥 ocupa tota la pantalla */
             border-radius: 40px;
-            padding: 24px 20px 32px;
             box-shadow: 0 25px 50px -8px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,215,0,0.15);
             position: relative;
             overflow: hidden;
-            min-height: 700px;
             border: 1px solid #2a2a3a;
             background: transparent;
+            display: flex;
+            flex-direction: column;
         }
 
         /* 🐉 PANTALLA INICI CENTRADA PERFECTAMENT */
         #home-screen {
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;   /* 🔥 centra verticalment */
             align-items: center;       /* 🔥 centra horitzontalment */
-            height: 100%;              /* 🔥 ocupa tota la pantalla */
             text-align: center;
             cursor: pointer;
-            transition: opacity 0.4s ease, transform 0.3s ease;
-        }
-
-        #home-screen:active {
-            transform: scale(0.97);
         }
 
         .dragon-image-wrapper {
@@ -56,7 +52,6 @@
             height: 260px;
             border-radius: 50%;
             overflow: hidden;
-            position: relative;
             box-shadow:
                 0 0 60px rgba(255, 0, 0, 0.6),
                 0 0 120px rgba(255, 0, 0, 0.3),
@@ -64,14 +59,12 @@
             border: 3px solid #ff2200;
             background-color: #000000;
             animation: dragonPulse 2s ease-in-out infinite;
-            margin-bottom: 20px; /* 🔥 més equilibrat */
         }
 
         .dragon-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
 
         .home-text {
@@ -91,23 +84,23 @@
 
         /* 🛡️ SEGONA PANTALLA AMB FONS ESCUT */
         #menu-screen {
+            flex: 1;
             display: none;
             flex-direction: column;
-            gap: 18px;
+            align-items: center;
             background-image: url('escudo.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
-            padding: 0;
-            height: 100%;
+            padding-top: 80px;
         }
 
         .icon-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-top: 40px;
+            width: 100%;
             padding: 0 20px;
         }
 
@@ -120,24 +113,16 @@
             color: #ccc;
             border: 1px solid #2a2a3a;
             box-shadow: 0 8px 0 #050508, 0 12px 25px rgba(0,0,0,0.8);
-            transition: all 0.1s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 130px;
-            cursor: pointer;
-        }
-
-        .icon-item:active {
-            transform: translateY(5px);
-            box-shadow: 0 3px 0 #050508;
         }
 
         .icon-emoji {
             font-size: 4.2rem;
             margin-bottom: 6px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
         }
 
         .icon-label {
@@ -150,14 +135,13 @@
             border-radius: 30px;
             border: 1px solid #3a3a4a;
             color: #c0b090;
-            text-shadow: 0 0 10px rgba(200,180,100,0.1);
         }
 
-        /* 🔥 TEXT FLUORESCENT CENTRAT I A BAIX */
+        /* 🔥 TEXT FLUORESCENT CENTRAT I A BAIX DEL TOT */
         .clave-pda-bg {
             position: absolute;
             left: 50%;
-            bottom: 15px; /* 🔥 més avall */
+            bottom: 15px;
             transform: translateX(-50%) rotate(-2deg);
             font-size: 1.8rem;
             font-weight: 700;
@@ -168,8 +152,8 @@
             text-shadow: 0 0 25px rgba(255,255,100,0.4);
             pointer-events: none;
             font-family: 'Courier New', monospace;
-            z-index: 10;
             white-space: nowrap;
+            z-index: 10;
         }
 
         .back-btn {
@@ -183,12 +167,7 @@
             align-items: center;
             gap: 10px;
             font-weight: 300;
-            transition: 0.2s;
             z-index: 20;
-        }
-
-        .back-btn:hover {
-            color: #c4a030;
         }
 
         @keyframes dragonPulse {
@@ -209,7 +188,6 @@
 
         <!-- 🐉 PANTALLA INICI CENTRADA -->
         <div id="home-screen">
-            
             <div class="dragon-image-wrapper">
                 <img src="ojo_dragon.jpg" alt="Ull de drac">
             </div>
@@ -221,39 +199,15 @@
             </div>
         </div>
 
-        <!-- 🛡️ PANTALLA MENÚ AMB FONS ESCUT -->
+        <!-- 🛡️ PANTALLA MENÚ AMB ESCUT -->
         <div id="menu-screen">
             <button class="back-btn" id="backBtn">← <span>Tornar</span></button>
 
             <div class="icon-grid">
-
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" 
-                   target="_blank" 
-                   class="icon-item external-link">
-                    <div class="icon-emoji">⚔️</div>
-                    <div class="icon-label">ARMES</div>
-                </a>
-
-                <a href="https://forms.office.com/e/HutLxU4Xqr" 
-                   target="_blank" 
-                   class="icon-item external-link">
-                    <div class="icon-emoji">🛡️</div>
-                    <div class="icon-label">BALÍSTIC</div>
-                </a>
-
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu" 
-                   target="_blank" 
-                   class="icon-item external-link">
-                    <div class="icon-emoji">🚐</div>
-                    <div class="icon-label">VEHICLES</div>
-                </a>
-
-                <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" 
-                   target="_blank" 
-                   class="icon-item external-link">
-                    <div class="icon-emoji">📷</div>
-                    <div class="icon-label">CÀMERES</div>
-                </a>
+                <a href="#" class="icon-item"><div class="icon-emoji">⚔️</div><div class="icon-label">ARMES</div></a>
+                <a href="#" class="icon-item"><div class="icon-emoji">🛡️</div><div class="icon-label">BALÍSTIC</div></a>
+                <a href="#" class="icon-item"><div class="icon-emoji">🚐</div><div class="icon-label">VEHICLES</div></a>
+                <a href="#" class="icon-item"><div class="icon-emoji">📷</div><div class="icon-label">CÀMERES</div></a>
             </div>
 
             <div class="clave-pda-bg">CLAU PDA 8008206</div>
@@ -271,18 +225,9 @@
             menuScreen.style.display = 'flex';
         });
 
-        backBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
+        backBtn.addEventListener('click', () => {
             menuScreen.style.display = 'none';
             homeScreen.style.display = 'flex';
-        });
-
-        document.querySelectorAll('.external-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('href');
-                window.open(url, '_blank'); 
-            });
         });
     </script>
 </body>
