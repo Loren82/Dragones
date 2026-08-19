@@ -60,9 +60,9 @@
                 0 0 60px rgba(200, 50, 0, 0.4),
                 0 0 120px rgba(100, 0, 0, 0.3),
                 inset 0 0 60px rgba(0,0,0,0.9);
-            border: 2px solid rgba(150, 60, 20, 0.5);
+            border: 2px solid rgba(255, 68, 0, 0.5);
             margin-bottom: 30px;
-            background-color: #000000;
+            background-color: #0a0505;
         }
 
         .dragon-image-wrapper svg {
@@ -85,7 +85,7 @@
         }
 
         .home-text span {
-            color: #c4a030;
+            color: #ff4400;
             font-weight: 700;
         }
 
@@ -179,19 +179,19 @@
             color: #c4a030;
         }
 
-        @keyframes dragonBreath {
+        @keyframes dragonPulse {
             0%, 100% { 
-                filter: drop-shadow(0 0 30px rgba(200, 50, 0, 0.3));
+                filter: drop-shadow(0 0 30px rgba(255,68,0,0.3));
                 transform: scale(1);
             }
             50% { 
-                filter: drop-shadow(0 0 80px rgba(255, 80, 0, 0.5));
+                filter: drop-shadow(0 0 80px rgba(255,68,0,0.7));
                 transform: scale(1.03);
             }
         }
 
         .dragon-image-wrapper {
-            animation: dragonBreath 3s ease-in-out infinite;
+            animation: dragonPulse 2.5s ease-in-out infinite;
         }
     </style>
 </head>
@@ -202,107 +202,86 @@
         <!-- PANTALLA INICIO -->
         <div id="home-screen">
             <div class="dragon-image-wrapper">
-                <!-- DRAGÓN ESTILO JUEGO DE TRONOS - REDISEÑADO Y MÁS TÉTRICO -->
-                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Fondo negro puro -->
-                    <rect width="400" height="400" fill="#000000"/>
+                <!-- DRAGÓN SIMPLE Y CLARO - ESTILO JUEGO DE TRONOS -->
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Fondo oscuro -->
+                    <rect width="300" height="300" fill="#050302"/>
                     
-                    <!-- Cara principal - más ancha y siniestra -->
-                    <ellipse cx="200" cy="200" rx="140" ry="160" fill="#0d0806"/>
+                    <!-- Cara principal - gris oscuro para destacar -->
+                    <ellipse cx="150" cy="145" rx="105" ry="115" fill="#1a0e0a"/>
+                    <ellipse cx="150" cy="145" rx="95" ry="105" fill="#2a1510"/>
                     
-                    <!-- Textura de piel escamosa -->
-                    <ellipse cx="200" cy="200" rx="130" ry="150" fill="none" stroke="#1a0e0a" stroke-width="1" opacity="0.5"/>
-                    
-                    <!-- Cuernos principales - grandes y curvados hacia atrás -->
-                    <path d="M80 130 L30 30 L100 100 L60 40 L120 110" fill="#0d0806" stroke="#3a2015" stroke-width="2"/>
-                    <path d="M320 130 L370 30 L300 100 L340 40 L280 110" fill="#0d0806" stroke="#3a2015" stroke-width="2"/>
+                    <!-- Cuernos principales - AFILADOS -->
+                    <path d="M70 100 L25 15 L90 80 L55 25 L110 90" fill="#1a0a05" stroke="#3a2010" stroke-width="2"/>
+                    <path d="M230 100 L275 15 L210 80 L245 25 L190 90" fill="#1a0a05" stroke="#3a2010" stroke-width="2"/>
                     
                     <!-- Cuernos secundarios -->
-                    <path d="M100 110 L60 60 L115 100" fill="#0d0806" stroke="#3a2015" stroke-width="1.5"/>
-                    <path d="M300 110 L340 60 L285 100" fill="#0d0806" stroke="#3a2015" stroke-width="1.5"/>
+                    <path d="M85 85 L55 35 L100 80" fill="#1a0a05" stroke="#3a2010" stroke-width="1.5"/>
+                    <path d="M215 85 L245 35 L200 80" fill="#1a0a05" stroke="#3a2010" stroke-width="1.5"/>
                     
-                    <!-- Ojos - grandes, rojos brillantes y siniestros -->
-                    <ellipse cx="145" cy="170" rx="40" ry="35" fill="#110500" stroke="#2a0a05" stroke-width="2"/>
-                    <ellipse cx="255" cy="170" rx="40" ry="35" fill="#110500" stroke="#2a0a05" stroke-width="2"/>
+                    <!-- OJOS - GRANDES Y ROJOS BRILLANTES -->
+                    <ellipse cx="115" cy="125" rx="38" ry="33" fill="#0a0200" stroke="#3a1005" stroke-width="2"/>
+                    <ellipse cx="185" cy="125" rx="38" ry="33" fill="#0a0200" stroke="#3a1005" stroke-width="2"/>
                     
-                    <!-- Globo ocular rojo -->
-                    <ellipse cx="145" cy="170" rx="35" ry="30" fill="#cc0000"/>
-                    <ellipse cx="255" cy="170" rx="35" ry="30" fill="#cc0000"/>
+                    <!-- Globo ocular ROJO FUERTE -->
+                    <ellipse cx="115" cy="125" rx="32" ry="28" fill="#ff0000"/>
+                    <ellipse cx="185" cy="125" rx="32" ry="28" fill="#ff0000"/>
                     
-                    <!-- Pupila vertical - reptiliana -->
-                    <ellipse cx="145" cy="170" rx="5" ry="25" fill="#000000"/>
-                    <ellipse cx="255" cy="170" rx="5" ry="25" fill="#000000"/>
+                    <!-- Pupila VERTICAL NEGRA -->
+                    <ellipse cx="115" cy="125" rx="5" ry="22" fill="#000000"/>
+                    <ellipse cx="185" cy="125" rx="5" ry="22" fill="#000000"/>
                     
-                    <!-- Brillo diabólico en los ojos -->
-                    <ellipse cx="138" cy="160" rx="10" ry="6" fill="#ff4400" opacity="0.7"/>
-                    <ellipse cx="248" cy="160" rx="10" ry="6" fill="#ff4400" opacity="0.7"/>
+                    <!-- Brillo en los ojos - BLANCO/AMARILLO -->
+                    <ellipse cx="107" cy="115" rx="10" ry="6" fill="#ffaa44" opacity="0.8"/>
+                    <ellipse cx="177" cy="115" rx="10" ry="6" fill="#ffaa44" opacity="0.8"/>
                     
-                    <!-- Cejas - marcadas y agresivas -->
-                    <path d="M100 135 L155 120 L180 130" stroke="#0d0806" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M300 135 L245 120 L220 130" stroke="#0d0806" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <!-- Cejas - AGRESIVAS -->
+                    <path d="M72 100 L120 85 L142 95" stroke="#0d0806" stroke-width="7" fill="none" stroke-linecap="round"/>
+                    <path d="M228 100 L180 85 L158 95" stroke="#0d0806" stroke-width="7" fill="none" stroke-linecap="round"/>
                     
-                    <!-- Cresta ósea sobre ojos -->
-                    <path d="M120 125 L145 130 L170 125" stroke="#2a1510" stroke-width="5" fill="none"/>
-                    <path d="M280 125 L255 130 L230 125" stroke="#2a1510" stroke-width="5" fill="none"/>
+                    <!-- Boca - ABIERTA -->
+                    <path d="M85 210 Q150 280 215 210" fill="#0a0302" stroke="#3a1a0a" stroke-width="2.5"/>
                     
-                    <!-- Nariz - orificios oscuros -->
-                    <ellipse cx="180" cy="220" rx="12" ry="8" fill="#000000" stroke="#2a1008" stroke-width="1.5"/>
-                    <ellipse cx="220" cy="220" rx="12" ry="8" fill="#000000" stroke="#2a1008" stroke-width="1.5"/>
+                    <!-- DIENTES SUPERIORES - AFILADOS -->
+                    <path d="M95 210 L103 248 L111 210" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M118 207 L126 253 L134 207" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M141 205 L149 258 L157 205" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M164 205 L172 258 L180 205" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M187 207 L195 253 L203 207" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M210 210 L218 248 L226 210" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
                     
-                    <!-- Boca abierta - siniestra -->
-                    <path d="M110 275 Q200 360 290 275" fill="#050201" stroke="#2a1008" stroke-width="2.5"/>
+                    <!-- COLMILLOS INFERIORES -->
+                    <path d="M108 248 L118 225 L128 248" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M133 253 L143 228 L153 253" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M158 258 L168 230 L178 258" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
+                    <path d="M183 253 L193 228 L203 253" fill="#3a2a1a" stroke="#1a0a05" stroke-width="1"/>
                     
-                    <!-- Dientes superiores - afilados como cuchillas -->
-                    <path d="M120 275 L128 320 L136 275" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M145 272 L153 325 L161 272" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M170 270 L178 330 L186 270" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M195 268 L203 335 L211 268" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M220 268 L228 335 L236 268" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M245 270 L253 330 L261 270" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M270 272 L278 325 L286 272" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
+                    <!-- Lengua - ROJA -->
+                    <path d="M125 230 Q150 255 175 230" fill="#cc0000" stroke="#880000" stroke-width="1.5"/>
+                    <path d="M150 245 L143 262" stroke="#cc0000" stroke-width="2" fill="none"/>
+                    <path d="M150 245 L157 262" stroke="#cc0000" stroke-width="2" fill="none"/>
                     
-                    <!-- Dientes inferiores - colmillos -->
-                    <path d="M135 320 L145 295 L155 320" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M165 330 L175 300 L185 330" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M195 335 L205 302 L215 335" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M225 335 L235 302 L245 335" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
-                    <path d="M255 330 L265 300 L275 330" fill="#2a1a10" stroke="#1a0a05" stroke-width="1"/>
+                    <!-- FUEGO - LLAMAS NARANJA -->
+                    <path d="M115 270 Q150 320 185 270" fill="#ff4400" opacity="0.6"/>
+                    <path d="M125 275 Q150 300 175 275" fill="#ff8800" opacity="0.5"/>
+                    <path d="M135 278 Q150 290 165 278" fill="#ffcc00" opacity="0.4"/>
                     
-                    <!-- Lengua - bífida y roja -->
-                    <path d="M160 300 Q200 340 240 300" fill="#660000" stroke="#440000" stroke-width="2"/>
-                    <path d="M200 320 L190 345" stroke="#660000" stroke-width="2" fill="none"/>
-                    <path d="M200 320 L210 345" stroke="#660000" stroke-width="2" fill="none"/>
+                    <!-- NARIZ -->
+                    <ellipse cx="137" cy="170" rx="10" ry="7" fill="#050302" stroke="#2a1008" stroke-width="1.5"/>
+                    <ellipse cx="163" cy="170" rx="10" ry="7" fill="#050302" stroke="#2a1008" stroke-width="1.5"/>
                     
-                    <!-- Fuego - llamas rojas/naranjas -->
-                    <path d="M150 340 Q200 410 250 340" fill="#cc2200" opacity="0.5"/>
-                    <path d="M160 345 Q200 390 240 345" fill="#ff4400" opacity="0.4"/>
-                    <path d="M170 348 Q200 370 230 348" fill="#ff8800" opacity="0.3"/>
+                    <!-- CICATRIZ - CLARA -->
+                    <path d="M85 145 L100 135 L95 155" stroke="#3a1a0a" stroke-width="2.5" fill="none"/>
+                    <path d="M88 148 L105 142" stroke="#3a1a0a" stroke-width="2" fill="none"/>
                     
-                    <!-- Sombras profundas bajo los ojos -->
-                    <ellipse cx="145" cy="210" rx="45" ry="25" fill="#000000" opacity="0.5"/>
-                    <ellipse cx="255" cy="210" rx="45" ry="25" fill="#000000" opacity="0.5"/>
+                    <!-- ALETAS LATERALES -->
+                    <path d="M50 200 L15 220 L35 250 L60 225" fill="#1a0a05" stroke="#2a1510" stroke-width="1.5"/>
+                    <path d="M250 200 L285 220 L265 250 L240 225" fill="#1a0a05" stroke="#2a1510" stroke-width="1.5"/>
                     
-                    <!-- Cicatriz en el ojo izquierdo -->
-                    <path d="M110 190 L125 180 L120 200" stroke="#3a1a10" stroke-width="2.5" fill="none"/>
-                    <path d="M115 195 L130 190" stroke="#3a1a10" stroke-width="2" fill="none"/>
-                    
-                    <!-- Venas oscuras -->
-                    <path d="M120 130 Q140 160 130 190" stroke="#1a0805" stroke-width="2" fill="none" opacity="0.6"/>
-                    <path d="M280 130 Q260 160 270 190" stroke="#1a0805" stroke-width="2" fill="none" opacity="0.6"/>
-                    
-                    <!-- Aletas laterales - tétricas -->
-                    <path d="M60 230 L20 250 L40 290 L70 260" fill="#0d0806" stroke="#2a1510" stroke-width="2"/>
-                    <path d="M50 250 L10 270 L30 310 L60 280" fill="#0d0806" stroke="#2a1510" stroke-width="2"/>
-                    <path d="M340 230 L380 250 L360 290 L330 260" fill="#0d0806" stroke="#2a1510" stroke-width="2"/>
-                    <path d="M350 250 L390 270 L370 310 L340 280" fill="#0d0806" stroke="#2a1510" stroke-width="2"/>
-                    
-                    <!-- Escamas en la frente -->
-                    <path d="M175 145 L185 135 L195 145 L185 155 Z" fill="#150a08" stroke="#2a1510" stroke-width="0.5" opacity="0.7"/>
-                    <path d="M195 140 L205 130 L215 140 L205 150 Z" fill="#150a08" stroke="#2a1510" stroke-width="0.5" opacity="0.7"/>
-                    <path d="M215 145 L225 135 L235 145 L225 155 Z" fill="#150a08" stroke="#2a1510" stroke-width="0.5" opacity="0.7"/>
-                    
-                    <!-- Barbilla escamosa -->
-                    <path d="M170 355 L185 360 L200 355 L215 360 L230 355" stroke="#2a1510" stroke-width="1.5" fill="none"/>
+                    <!-- ESCAMAS EN LA FRENTE -->
+                    <path d="M135 105 L142 95 L149 105 L142 115 Z" fill="#3a1a10" stroke="#4a2a18" stroke-width="0.5"/>
+                    <path d="M149 100 L156 90 L163 100 L156 110 Z" fill="#3a1a10" stroke="#4a2a18" stroke-width="0.5"/>
+                    <path d="M163 105 L170 95 L177 105 L170 115 Z" fill="#3a1a10" stroke="#4a2a18" stroke-width="0.5"/>
                 </svg>
             </div>
 
