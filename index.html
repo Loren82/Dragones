@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dracs</title>
 
+    <!-- REFRESC AUTOMÀTIC -->
+    <meta http-equiv="refresh" content="0; url=index.html">
+
     <style>
         * {
             margin: 0;
@@ -50,14 +53,12 @@
             transform: scale(0.97);
         }
 
-        /* --- CONTENEDOR DE LA IMAGEN DEL OJO --- */
         .dragon-image-wrapper {
             width: 260px;
             height: 260px;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
-            /* Sombras rojas y anillo exterior */
             box-shadow:
                 0 0 60px rgba(255, 0, 0, 0.6),
                 0 0 120px rgba(255, 0, 0, 0.3),
@@ -65,15 +66,13 @@
             border: 3px solid #ff2200;
             margin-bottom: 30px;
             background-color: #000000;
-            /* Animación de latido */
             animation: dragonPulse 2s ease-in-out infinite;
         }
 
-        /* La imagen real del ojo */
         .dragon-image-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajusta la imagen al círculo sin deformarla */
+            object-fit: cover;
             display: block;
         }
 
@@ -185,7 +184,6 @@
             color: #c4a030;
         }
 
-        /* ANIMACIÓN DE LATIDO (DRAGON PULSE) */
         @keyframes dragonPulse {
             0%, 100% { 
                 filter: drop-shadow(0 0 30px rgba(255,0,0,0.3));
@@ -205,7 +203,6 @@
         <!-- PANTALLA INICI -->
         <div id="home-screen">
             
-            <!-- CONTENEDOR DE LA IMATGE -->
             <div class="dragon-image-wrapper">
                 <img src="ojo_dragon.jpg" alt="Ull de drac">
             </div>
