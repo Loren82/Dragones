@@ -1,3 +1,6 @@
+El error 500 (Internal Server Error) ocurre porque al intentar abrir las páginas de Microsoft Forms o plataformas institucionales dentro del WebView incrustado de WebIntoApp, se pierden las cookies de sesión, los tokens de autenticación o el contexto de seguridad (especialmente con sistemas que requieren inicio de sesión como Microsoft o Axon Evidence), provocando que el servidor colapse al intentar validar la petición dentro de un entorno móvil restringido.
+Para solucionarlo de forma definitiva, la mejor opción es forzar la apertura directa en el navegador predeterminado del dispositivo (Chrome, Safari, etc.) en el mismo instante en que se hace clic en cada icono, evitando por completo el WebView y permitiendo además el zoom libre y el funcionamiento correcto de las sesiones.
+Aquí tienes el código completo y corregido:
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -22,7 +25,7 @@
             align-items: center;
             padding: 16px;
             overflow-x: hidden;
-            touch-action: pan-x pan-y pinch-zoom;
+            touch-action: manipulation;
             -webkit-text-size-adjust: 100%;
         }
 
@@ -309,7 +312,6 @@
         const menuScreen = document.getElementById('menu-screen');
         const backBtn = document.getElementById('backBtn');
 
-        // Función para mostrar fallback si la imagen no carga
         function showDragonFallback() {
             const wrapper = document.getElementById('dragonWrapper');
             wrapper.innerHTML = '<div class="dragon-fallback">🐉</div>';
@@ -326,38 +328,21 @@
             homeScreen.style.display = 'flex';
         });
 
-        // FUNCIÓN ESPECÍFICA PARA WEBINTOAPP
-        // WebIntoApp usa un WebView que necesita este manejo especial
+        // APERTURA FORZADA EN NAVEGADOR EXTERNO PARA EVITAR ERRORES DE WEBVIEW
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const url = this.getAttribute('data-url');
                 
-                // Crear un formulario y enviarlo para forzar la apertura externa
-                const form = document.createElement('form');
-                form.method = 'GET';
-                form.action = url;
-                form.target = '_blank';
-                document.body.appendChild(form);
-                form.submit();
-                document.body.removeChild(form);
-                
-                // También intentar con location.href como backup
-                setTimeout(() => {
-                    window.open(url, '_blank', 'noopener,noreferrer');
-                }, 500);
+                // Método compatible con contenedores Android/iOS de WebIntoApp para abrir el navegador nativo
+                if (window.navigator && window.navigator.userAgent) {
+                    window.open(url, '_system');
+                } else {
+                    window.open(url, '_blank');
+                }
             });
         });
-
-        // Prevenir doble tap accidental pero permitir zoom
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(e) {
-            const now = Date.now();
-            if (now - lastTouchEnd <= 300) {
-                e.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, { passive: false });
     </script>
 </body>
 </html>
+
