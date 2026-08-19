@@ -268,11 +268,20 @@
             homeScreen.style.display = 'flex';
         });
 
-        // Solució neta d'enllaços per evitar el Server Error 500
+        // Forcem l'obertura externa neta evitant el WebView intern de l'app
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
-                // Deixem que l'atribut target="_blank" i el navegador gestionin l'obertura de manera nativa
-                // Això evita bloquejos de Microsoft Forms i errors de servidor
+                e.preventDefault();
+                const url = this.getAttribute('href');
+                
+                // Utilitzem window.open amb un iframe ocult o directament location per desviar la petició al navegador nadiu del dispositiu
+                const a = document.createElement('a');
+                a.href = url;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
             });
         });
     </script>
