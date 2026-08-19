@@ -218,22 +218,35 @@
             <button class="back-btn" id="backBtn">← <span>Tornar</span></button>
 
             <div class="icon-grid">
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" target="_blank" class="icon-item external-link">
+
+                <!-- ARMES -->
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" 
+                   target="_blank" 
+                   class="icon-item external-link">
                     <div class="icon-emoji">⚔️</div>
                     <div class="icon-label">ARMES</div>
                 </a>
 
-                <a href="https://forms.office.com/e/HutLxU4Xqr" target="_blank" class="icon-item external-link">
+                <!-- BALÍSTIC -->
+                <a href="https://forms.office.com/e/HutLxU4Xqr" 
+                   target="_blank" 
+                   class="icon-item external-link">
                     <div class="icon-emoji">🛡️</div>
                     <div class="icon-label">BALÍSTIC</div>
                 </a>
 
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu&origin=QRCode" target="_blank" class="icon-item external-link">
+                <!-- VEHICLES -->
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu" 
+                   target="_blank" 
+                   class="icon-item external-link">
                     <div class="icon-emoji">🚐</div>
                     <div class="icon-label">VEHICLES</div>
                 </a>
 
-                <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" target="_blank" class="icon-item external-link">
+                <!-- CÀMERES -->
+                <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" 
+                   target="_blank" 
+                   class="icon-item external-link">
                     <div class="icon-emoji">📷</div>
                     <div class="icon-label">CÀMERES</div>
                 </a>
@@ -260,14 +273,12 @@
             homeScreen.style.display = 'flex';
         });
 
+        /* FIX DEFINITIU PER EVITAR 404 EN WEBVIEW / APK / GITHUB PAGES */
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const url = this.getAttribute('href');
-                const win = window.open(url, '_system');
-                if (!win || win.closed || typeof win.closed == 'undefined') {
-                    window.location.href = url;
-                }
+                window.open(url, '_blank'); 
             });
         });
     </script>
