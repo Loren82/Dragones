@@ -2,7 +2,7 @@
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
     <title>Dracs</title>
 
     <style>
@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -21,7 +22,8 @@
             align-items: center;
             padding: 16px;
             overflow-x: hidden;
-            touch-action: manipulation;
+            touch-action: pan-x pan-y pinch-zoom;
+            -webkit-text-size-adjust: 100%;
         }
 
         .app-container {
@@ -254,7 +256,7 @@
         <div id="home-screen">
             
             <div class="dragon-image-wrapper">
-                <img src="ojo_dragon.jpg" alt="Ull de drac">
+                <img src="https://loren82.github.io/Dragones/ojo_dragon.jpg" alt="Ull de drac" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22260%22 height=%22260%22%3E%3Crect width=%22260%22 height=%22260%22 fill=%22%23000%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23ff2200%22 font-size=%2220%22%3EDRAC%3C/text%3E%3C/svg%3E'">
             </div>
 
             <div class="home-text">🔮 Toca per <span>accedir</span></div>
@@ -271,29 +273,29 @@
             <div class="icon-grid">
 
                 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" 
-                   target="_blank" 
-                   class="icon-item external-link">
+                   class="icon-item external-link" 
+                   data-url="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode">
                     <div class="icon-emoji">⚔️</div>
                     <div class="icon-label">ARMES</div>
                 </a>
 
                 <a href="https://forms.office.com/e/HutLxU4Xqr" 
-                   target="_blank" 
-                   class="icon-item external-link">
+                   class="icon-item external-link" 
+                   data-url="https://forms.office.com/e/HutLxU4Xqr">
                     <div class="icon-emoji">🛡️</div>
                     <div class="icon-label">BALÍSTIC</div>
                 </a>
 
                 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu" 
-                   target="_blank" 
-                   class="icon-item external-link">
+                   class="icon-item external-link" 
+                   data-url="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu">
                     <div class="icon-emoji">🚐</div>
                     <div class="icon-label">VEHICLES</div>
                 </a>
 
                 <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" 
-                   target="_blank" 
-                   class="icon-item external-link">
+                   class="icon-item external-link" 
+                   data-url="https://segpubcat.eur.evidence.com/axon/device/device-search">
                     <div class="icon-emoji">📷</div>
                     <div class="icon-label">CÀMERES</div>
                 </a>
@@ -320,26 +322,66 @@
             homeScreen.style.display = 'flex';
         });
 
-        // Abrir enlaces en el navegador predeterminado del dispositivo
+        // Función para detectar si estamos en un WebView
+        function isWebView() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // Detectar iOS WebView
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                if (/CriOS|FxiOS|EdgiOS|OPiOS/.test(userAgent)) {
+                    return false; // Es un navegador normal
+                }
+                return true; // Es WebView
+            }
+            
+            // Detectar Android WebView
+            if (/Android/.test(userAgent)) {
+                if (/Chrome\/[.0-9]* Mobile/.test(userAgent) && !/wv/.test(userAgent)) {
+                    return false; // Es Chrome normal
+                }
+                if (/wv/.test(userAgent)) {
+                    return true; // Es WebView de Android
+                }
+            }
+            
+            return false;
+        }
+
+        // Abrir enlaces en el navegador nativo
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const url = this.getAttribute('href');
+                const url = this.getAttribute('data-url') || this.getAttribute('href');
                 
-                // Usar location.href para abrir en el navegador predeterminado
-                // Esto fuerza la salida de la WebView en la mayoría de las apps
-                window.location.href = url;
-                
-                // Alternativa para intentar abrir en navegador externo
-                // setTimeout(() => {
-                //     window.open(url, '_system');
-                // }, 100);
+                if (isWebView()) {
+                    // Estamos en un WebView - intentar abrir en navegador nativo
+                    try {
+                        // Intento 1: Usar window.open con _system
+                        window.open(url, '_system');
+                        
+                        // Intento 2: Usar location.href como fallback
+                        setTimeout(() => {
+                            window.location.href = url;
+                        }, 500);
+                    } catch (error) {
+                        // Fallback final
+                        window.location.href = url;
+                    }
+                } else {
+                    // Estamos en un navegador normal
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                }
             });
         });
 
-        // Prevenir zoom con doble tap pero mantener pinch-zoom
-        document.addEventListener('dblclick', function(e) {
-            e.preventDefault();
+        // Prevenir doble tap accidental pero permitir zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(e) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
         }, { passive: false });
     </script>
 </body>
