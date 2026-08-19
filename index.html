@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dracs</title>
 
-    <!-- refresc commit -->
-
     <style>
         * {
             margin: 0;
@@ -149,7 +147,6 @@
             text-shadow: 0 0 10px rgba(200,180,100,0.1);
         }
 
-        /* 🔥 LLETRES DE FONS — DOBLE TAMANY + GROC FLUORESCENT */
         .clave-pda-bg {
             position: absolute;
             bottom: 20px;
@@ -221,7 +218,6 @@
 
             <div class="icon-grid">
 
-                <!-- ARMES -->
                 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUQlJQSldCMDEzNjFZTFo5OFdYVjBHNTRVUCQlQCN0PWcu&origin=QRCode" 
                    target="_blank" 
                    class="icon-item external-link">
@@ -229,7 +225,6 @@
                     <div class="icon-label">ARMES</div>
                 </a>
 
-                <!-- BALÍSTIC -->
                 <a href="https://forms.office.com/e/HutLxU4Xqr" 
                    target="_blank" 
                    class="icon-item external-link">
@@ -237,7 +232,6 @@
                     <div class="icon-label">BALÍSTIC</div>
                 </a>
 
-                <!-- VEHICLES -->
                 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=5IJ0qb4dJUyik3gOc3n0niAcJ-nHf9hBsq5xpGjE_kNUNUNNNzBLUEFDUzJaVjkxQzhMU0hQUDdMTiQlQCN0PWcu" 
                    target="_blank" 
                    class="icon-item external-link">
@@ -245,7 +239,6 @@
                     <div class="icon-label">VEHICLES</div>
                 </a>
 
-                <!-- CÀMERES -->
                 <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" 
                    target="_blank" 
                    class="icon-item external-link">
@@ -269,13 +262,14 @@
             menuScreen.style.display = 'flex';
         });
 
+        // Corregit: Evita que el botó de retrocés tanqui l'aplicació
         backBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
             menuScreen.style.display = 'none';
             homeScreen.style.display = 'flex';
         });
 
-        /* FIX GLOBAL PER A TOTS ELS ENLLAÇOS EXTERNS */
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
