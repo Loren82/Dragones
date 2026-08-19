@@ -2,7 +2,7 @@
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dracs</title>
 
     <style>
@@ -20,6 +20,7 @@
             justify-content: center;
             align-items: center;
             padding: 16px;
+            overflow-x: hidden;
         }
 
         .app-container {
@@ -33,6 +34,55 @@
             overflow: hidden;
             min-height: 700px;
             border: 1px solid #2a2a3a;
+        }
+
+        /* Media query para pantallas horizontales */
+        @media (orientation: landscape) and (max-height: 600px) {
+            .app-container {
+                max-width: 600px;
+                min-height: auto;
+                padding: 16px;
+                border-radius: 20px;
+            }
+            
+            #home-screen {
+                min-height: auto;
+                padding: 20px 0;
+            }
+            
+            .dragon-image-wrapper {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 15px;
+            }
+            
+            .icon-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+            
+            .icon-item {
+                min-height: 100px;
+                padding: 10px 5px;
+            }
+            
+            .icon-emoji {
+                font-size: 3rem;
+                margin-bottom: 4px;
+            }
+            
+            .icon-label {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+                padding: 3px 10px;
+            }
+            
+            .clave-pda-bg {
+                position: relative;
+                bottom: auto;
+                margin-top: 15px;
+                font-size: 1.4rem;
+            }
         }
 
         #home-screen {
@@ -268,19 +318,19 @@
             homeScreen.style.display = 'flex';
         });
 
-        // Forcem l'obertura externa neta evitant el WebView intern de l'app
+        // Abrir enlaces externos de forma más confiable
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const url = this.getAttribute('href');
                 
-                const a = document.createElement('a');
-                a.href = url;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
+                // Intentar abrir en nueva ventana/pestaña
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                
+                // Si window.open falla (bloqueado), usar location.href
+                if (!newWindow) {
+                    window.location.href = url;
+                }
             });
         });
     </script>
