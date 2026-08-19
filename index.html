@@ -274,7 +274,6 @@
                 e.preventDefault();
                 const url = this.getAttribute('href');
                 
-                // Utilitzem window.open amb un iframe ocult o directament location per desviar la petició al navegador nadiu del dispositiu
                 const a = document.createElement('a');
                 a.href = url;
                 a.target = '_blank';
