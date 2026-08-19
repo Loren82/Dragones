@@ -2,7 +2,7 @@
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dracs</title>
 
     <style>
@@ -257,7 +257,6 @@
         const menuScreen = document.getElementById('menu-screen');
         const backBtn = document.getElementById('backBtn');
 
-        // Navegació interna de pantalles
         homeScreen.addEventListener('click', () => {
             homeScreen.style.display = 'none';
             menuScreen.style.display = 'flex';
@@ -269,12 +268,11 @@
             homeScreen.style.display = 'flex';
         });
 
-        // Obertura d'enllaços externs al navegador del sistema
+        // Solució neta d'enllaços per evitar el Server Error 500
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('href');
-                window.open(url, '_system');
+                // Deixem que l'atribut target="_blank" i el navegador gestionin l'obertura de manera nativa
+                // Això evita bloquejos de Microsoft Forms i errors de servidor
             });
         });
     </script>
