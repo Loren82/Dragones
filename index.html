@@ -155,10 +155,10 @@
             bottom: 20px;
             width: 100%;
             text-align: center;
-            font-size: 1.8rem; /* el doble */
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #ffff33; /* groc fluorescent */
-            opacity: 0.85; /* visibilitat alta */
+            color: #ffff33;
+            opacity: 0.85;
             letter-spacing: 6px;
             text-transform: uppercase;
             text-shadow: 0 0 25px rgba(255,255,100,0.4);
@@ -275,12 +275,17 @@
             homeScreen.style.display = 'flex';
         });
 
-        /* FIX DEFINITIU PER EVITAR 404 EN WEBVIEW / APK / GITHUB PAGES */
+        /* FIX GLOBAL PER A TOTS ELS ENLLAÇOS EXTERNS */
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const url = this.getAttribute('href');
-                window.open(url, '_blank'); 
+                
+                if (window.navigator && window.navigator.app && window.navigator.app.loadUrl) {
+                    window.navigator.app.loadUrl(url, { openExternal: true });
+                } else {
+                    window.open(url, '_system' in window ? '_system' : '_blank');
+                }
             });
         });
     </script>
