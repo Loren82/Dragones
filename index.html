@@ -2,7 +2,7 @@
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Dracs</title>
 
     <style>
@@ -21,6 +21,7 @@
             align-items: center;
             padding: 16px;
             overflow-x: hidden;
+            touch-action: manipulation;
         }
 
         .app-container {
@@ -34,6 +35,7 @@
             overflow: hidden;
             min-height: 700px;
             border: 1px solid #2a2a3a;
+            touch-action: pan-x pan-y pinch-zoom;
         }
 
         /* Media query para pantallas horizontales */
@@ -318,21 +320,27 @@
             homeScreen.style.display = 'flex';
         });
 
-        // Abrir enlaces externos de forma más confiable
+        // Abrir enlaces en el navegador predeterminado del dispositivo
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const url = this.getAttribute('href');
                 
-                // Intentar abrir en nueva ventana/pestaña
-                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                // Usar location.href para abrir en el navegador predeterminado
+                // Esto fuerza la salida de la WebView en la mayoría de las apps
+                window.location.href = url;
                 
-                // Si window.open falla (bloqueado), usar location.href
-                if (!newWindow) {
-                    window.location.href = url;
-                }
+                // Alternativa para intentar abrir en navegador externo
+                // setTimeout(() => {
+                //     window.open(url, '_system');
+                // }, 100);
             });
         });
+
+        // Prevenir zoom con doble tap pero mantener pinch-zoom
+        document.addEventListener('dblclick', function(e) {
+            e.preventDefault();
+        }, { passive: false });
     </script>
 </body>
 </html>
