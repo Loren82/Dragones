@@ -326,40 +326,26 @@
             homeScreen.style.display = 'flex';
         });
 
-        // FUNCIÓN CRÍTICA: Abrir enlaces en navegador externo cuando está en APK
+        // FUNCIÓN ESPECÍFICA PARA WEBINTOAPP
+        // WebIntoApp usa un WebView que necesita este manejo especial
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const url = this.getAttribute('data-url');
                 
-                // Detectar si estamos en Android WebView
-                const isAndroid = /Android/i.test(navigator.userAgent);
+                // Crear un formulario y enviarlo para forzar la apertura externa
+                const form = document.createElement('form');
+                form.method = 'GET';
+                form.action = url;
+                form.target = '_blank';
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
                 
-                if (isAndroid) {
-                    // Intentar usar el intent de Android para abrir en navegador externo
-                    try {
-                        // Método 1: Usar location.href con intent
-                        const intentUrl = 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;action=android.intent.action.VIEW;end';
-                        window.location.href = intentUrl;
-                        
-                        // Método 2: Fallback después de 1 segundo
-                        setTimeout(() => {
-                            const tempLink = document.createElement('a');
-                            tempLink.href = url;
-                            tempLink.target = '_blank';
-                            tempLink.rel = 'noopener noreferrer';
-                            document.body.appendChild(tempLink);
-                            tempLink.click();
-                            document.body.removeChild(tempLink);
-                        }, 1000);
-                    } catch (error) {
-                        // Método 3: Fallback final
-                        window.open(url, '_blank');
-                    }
-                } else {
-                    // Para iOS u otros
+                // También intentar con location.href como backup
+                setTimeout(() => {
                     window.open(url, '_blank', 'noopener,noreferrer');
-                }
+                }, 500);
             });
         });
 
