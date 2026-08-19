@@ -257,29 +257,24 @@
         const menuScreen = document.getElementById('menu-screen');
         const backBtn = document.getElementById('backBtn');
 
+        // Navegació interna de pantalles
         homeScreen.addEventListener('click', () => {
             homeScreen.style.display = 'none';
             menuScreen.style.display = 'flex';
         });
 
-        // Corregit: Evita que el botó de retrocés tanqui l'aplicació
         backBtn.addEventListener('click', (e) => {
-            e.preventDefault();
             e.stopPropagation();
             menuScreen.style.display = 'none';
             homeScreen.style.display = 'flex';
         });
 
+        // Obertura d'enllaços externs al navegador del sistema
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const url = this.getAttribute('href');
-                
-                if (window.navigator && window.navigator.app && window.navigator.app.loadUrl) {
-                    window.navigator.app.loadUrl(url, { openExternal: true });
-                } else {
-                    window.open(url, '_system' in window ? '_system' : '_blank');
-                }
+                window.open(url, '_system');
             });
         });
     </script>
