@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragons</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 420px;
+            background: linear-gradient(145deg, #1a1a24, #0d0d12);
+            border-radius: 40px;
+            padding: 24px 20px 32px;
+            box-shadow: 0 25px 50px -8px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,215,0,0.15);
+            position: relative;
+            overflow: hidden;
+            min-height: 700px;
+            border: 1px solid #2a2a3a;
+        }
+
+        #home-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.4s ease, transform 0.3s ease;
+        }
+
+        #home-screen:active {
+            transform: scale(0.97);
+        }
+
+        /* --- CONTENEDOR DE LA IMAGEN DEL OJO --- */
+        .dragon-image-wrapper {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            /* Sombras rojas y anillo exterior */
+            box-shadow:
+                0 0 60px rgba(255, 0, 0, 0.6),
+                0 0 120px rgba(255, 0, 0, 0.3),
+                inset 0 0 60px rgba(0,0,0,0.9);
+            border: 3px solid #ff2200;
+            margin-bottom: 30px;
+            background-color: #000000;
+            /* Animación de latido */
+            animation: dragonPulse 2s ease-in-out infinite;
+        }
+
+        /* La imagen real del ojo */
+        .dragon-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta la imagen al círculo sin deformarla */
+            display: block;
+        }
+
+        .home-text {
+            color: #8a7a5a;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            border-top: 1px solid #2a1a0a;
+            padding-top: 20px;
+            width: 80%;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .home-text span {
+            color: #ff2200;
+            font-weight: 700;
+        }
+
+        #menu-screen {
+            display: none;
+            flex-direction: column;
+            gap: 18px;
+            padding: 10px 0 20px;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .icon-item {
+            background: linear-gradient(145deg, #1a1a22, #0d0d12);
+            border-radius: 24px;
+            padding: 20px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #ccc;
+            border: 1px solid #2a2a3a;
+            box-shadow: 0 8px 0 #050508, 0 12px 25px rgba(0,0,0,0.8);
+            transition: all 0.1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 130px;
+            cursor: pointer;
+        }
+
+        .icon-item:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #050508;
+        }
+
+        .icon-emoji {
+            font-size: 4.2rem;
+            margin-bottom: 6px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+        }
+
+        .icon-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(255,255,255,0.04);
+            padding: 4px 14px;
+            border-radius: 30px;
+            border: 1px solid #3a3a4a;
+            color: #c0b090;
+            text-shadow: 0 0 10px rgba(200,180,100,0.1);
+        }
+
+        .clave-pda-bg {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(200, 180, 100, 0.08);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(200,180,100,0.05);
+            pointer-events: none;
+            font-family: 'Courier New', monospace;
+            transform: rotate(-2deg);
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: #8a7a5a;
+            font-size: 1.6rem;
+            padding-bottom: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 300;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #c4a030;
+        }
+
+        /* ANIMACIÓN DE LATIDO (DRAGON PULSE) */
+        @keyframes dragonPulse {
+            0%, 100% { 
+                filter: drop-shadow(0 0 30px rgba(255,0,0,0.3));
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 80px rgba(255,0,0,0.8));
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- PANTALLA INICIO -->
+        <div id="home-screen">
+            
+            <!-- CONTENEDOR DE LA IMAGEN -->
+            <div class="dragon-image-wrapper">
+                <!-- Aquí va la imagen real: Cambia el nombre 'ojo_dragon.jpg' por el tuyo si es diferente -->
+                <img src="ojo_dragon.jpg" alt="Ojo de dragón">
+            </div>
+
+            <div class="home-text">🔮 Toca para <span>acceder</span></div>
+
+            <div style="margin-top: 30px; font-size: 0.7rem; color: rgba(200,180,100,0.15); letter-spacing: 4px; font-family: monospace;">
+                CLAU PDA 8008206
+            </div>
+        </div>
+
+        <!-- PANTALLA MENÚ -->
+        <div id="menu-screen">
+            <button class="back-btn" id="backBtn">← <span>Volver</span></button>
+
+            <div class="icon-grid">
+                <a href="https://forms.office.com/r/kNUQlJQSld" target="_blank" class="icon-item external-link">
+                    <div class="icon-emoji">⚔️</div>
+                    <div class="icon-label">ARMAS</div>
+                </a>
+
+                <a href="https://forms.office.com/e/HutLxU4Xqr" target="_blank" class="icon-item external-link">
+                    <div class="icon-emoji">🛡️</div>
+                    <div class="icon-label">BALÍSTICO</div>
+                </a>
+
+                <a href="https://forms.office.com/r/kNUNUNNNzB" target="_blank" class="icon-item external-link">
+                    <div class="icon-emoji">🚐</div>
+                    <div class="icon-label">VEHÍCULOS</div>
+                </a>
+
+                <a href="https://segpubcat.eur.evidence.com/axon/device/device-search" target="_blank" class="icon-item external-link">
+                    <div class="icon-emoji">📷</div>
+                    <div class="icon-label">CÁMARAS</div>
+                </a>
+            </div>
+
+            <div class="clave-pda-bg">CLAU PDA 8008206</div>
+        </div>
+
+    </div>
+
+    <script>
+        const homeScreen = document.getElementById('home-screen');
+        const menuScreen = document.getElementById('menu-screen');
+        const backBtn = document.getElementById('backBtn');
+
+        homeScreen.addEventListener('click', () => {
+            homeScreen.style.display = 'none';
+            menuScreen.style.display = 'flex';
+        });
+
+        backBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuScreen.style.display = 'none';
+            homeScreen.style.display = 'flex';
+        });
+
+        document.querySelectorAll('.external-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = this.getAttribute('href');
+                const win = window.open(url, '_system');
+                if (!win || win.closed || typeof win.closed == 'undefined') {
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
